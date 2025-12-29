@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Corinne Geng | Data Analyst</title>
     <style>
-        /* Smooth Scrolling Enable */
         html {
             scroll-behavior: smooth;
         }
@@ -13,32 +12,38 @@
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, sans-serif;
             line-height: 1.6;
-            color: #333;
+            color: #1a1a1a;
             margin: 0;
             padding: 0;
-            background-color: #fff;
+            background-color: #ffffff;
         }
 
-        /* Fixed Navigation Menu */
+        /* Fixed Navigation Menu - Moved to the Right */
         nav {
             position: fixed;
             top: 0;
             width: 100%;
-            background: #fff;
+            background: rgba(255, 255, 255, 0.95);
             border-bottom: 1px solid #eee;
             display: flex;
-            justify-content: center;
-            padding: 15px 0;
+            /* This pushes the content to the right */
+            justify-content: flex-end; 
+            padding: 20px 0;
             z-index: 1000;
         }
 
+        nav .nav-links {
+            /* Spacing from the right edge of the screen */
+            margin-right: 50px; 
+        }
+
         nav a {
-            margin: 0 15px;
+            margin-left: 25px;
             text-decoration: none;
-            color: #555;
+            color: #666;
             font-weight: 500;
             font-size: 14px;
-            transition: color 0.3s;
+            transition: color 0.2s;
         }
 
         nav a:hover {
@@ -47,90 +52,101 @@
 
         /* Section Layout */
         section {
-            padding: 100px 20px; /* Padding for fixed nav spacing */
-            max-width: 800px;
+            padding: 120px 20px;
+            max-width: 850px;
             margin: 0 auto;
-            min-height: 60vh;
             border-bottom: 1px solid #f0f0f0;
         }
 
-        h1 { font-size: 2.5rem; margin-bottom: 10px; }
-        h2 { font-size: 1.5rem; border-left: 4px solid #333; padding-left: 15px; margin-bottom: 25px; }
+        h1 { font-size: 2.5rem; margin-bottom: 5px; font-weight: 700; }
+        h2 { font-size: 1.4rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 30px; color: #333; }
         
-        .job-title { font-weight: bold; font-size: 1.1rem; }
-        .company { color: #666; font-style: italic; }
-        .date { float: right; color: #888; font-size: 0.9rem; }
+        .job-header { display: flex; justify-content: space-between; align-items: baseline; margin-top: 25px; }
+        .job-title { font-weight: 700; font-size: 1.1rem; }
+        .company { color: #555; font-weight: 500; }
+        .date { color: #888; font-size: 0.9rem; }
         
-        ul { padding-left: 20px; }
-        li { margin-bottom: 8px; }
+        ul { padding-left: 20px; margin-top: 10px; }
+        li { margin-bottom: 10px; color: #444; }
 
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 10px;
+        .skills-container {
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
         }
     </style>
 </head>
 <body>
 
     <nav>
-        <a href="#home">Home</a>
-        <a href="#summary">Summary</a>
-        <a href="#skills">Skills</a>
-        <a href="#experience">Experience</a>
-        <a href="#education">Education</a>
+        <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#summary">Summary</a>
+            <a href="#skills">Skills</a>
+            <a href="#experience">Experience</a>
+            <a href="#education">Education</a>
+        </div>
     </nav>
 
     <section id="home">
-        <h1>Corinne Geng</h1>
-        <p>Lakewood, OH 44107 | 425-591-6414<br>
-        <a href="mailto:gengkejia@gmail.com">gengkejia@gmail.com</a></p>
+        [span_2](start_span)<h1>Corinne Geng</h1>[span_2](end_span)
+        <p>Lakewood, OH 44107 | 425-591-6414 | [span_3](start_span)<a href="mailto:gengkejia@gmail.com">gengkejia@gmail.com</a></p>[span_3](end_span)
     </section>
 
     <section id="summary">
         <h2>Professional Summary</h2>
-        [span_2](start_span)<p>Data Analyst with strong experience in SQL optimization, analytics, and dashboard development[span_2](end_span). [span_3](start_span)Proven ability to work with large datasets and deliver actionable insights to technical and non-technical stakeholders[span_3](end_span).</p>
+        [span_4](start_span)<p>Data Analyst with strong experience in SQL optimization, analytics, and dashboard development[span_4](end_span). [span_5](start_span)Proven ability to work with large datasets, improve system performance, and deliver actionable insights to technical and non-technical stakeholders[span_5](end_span). [span_6](start_span)Background spans public-sector analytics, data migration, and full-stack development[span_6](end_span).</p>
     </section>
 
     <section id="skills">
         <h2>Core Skills</h2>
-        <div class="skills-grid">
-            <div><strong>Languages:</strong> SQL, Python, R, PHP, JavaScript</div>
-            [span_4](start_span)<div><strong>Tools:</strong> Power BI, Tableau, Databricks, ArcGIS[span_4](end_span)</div>
-            [span_5](start_span)<div><strong>Data:</strong> Warehousing, Migration, Stats[span_5](end_span)</div>
+        <div class="skills-container">
+            <strong>Technical:</strong> SQL (Advanced), Microsoft SQL Server, MySQL, Data Warehousing, Python, R, Power BI, Tableau, Data Visualization, Statistical Analysis, Machine Learning, Data Migration, Excel, Git, AWS, Linux.
         </div>
     </section>
 
     <section id="experience">
         <h2>Professional Experience</h2>
         
-        <div class="job">
-            <span class="date">Jan 2025 - Present</span>
+        <div class="job-header">
             <div class="job-title">Data Analyst</div>
-            [span_6](start_span)<div class="company">Cleveland Division of Police[span_6](end_span)</div>
-            <ul>
-                [span_7](start_span)<li>Optimized reporting query performance from 2 hours to 15 seconds[span_7](end_span).</li>
-                [span_8](start_span)<li>Designed interactive dashboards using Power BI and Tableau[span_8](end_span).</li>
-            </ul>
+            <div class="date">January 2025 - Present</div>
         </div>
+        <div class="company">Cleveland Division of Police, Cleveland, OH</div>
+        <ul>
+            <li>Developed and optimized complex SQL queries and reporting pipelines supporting high-volume operational datasets.</li>
+            [span_7](start_span)<li>Improved performance of a critical reporting query from ~2 hours to ~15 seconds using indexing, execution-plan analysis, and query refactoring[span_7](end_span).</li>
+            [span_8](start_span)<li>Designed and maintained interactive dashboards using Power BI and Tableau to support leadership decision-making[span_8](end_span).</li>
+            [span_9](start_span)<li>Worked with data warehouses and analytical tools including SQL Server, Excel, Databricks, and ArcGIS[span_9](end_span).</li>
+        </ul>
 
-        <br>
-
-        <div class="job">
-            <span class="date">Nov 2022 - Dec 2024</span>
+        <div class="job-header">
             <div class="job-title">Project Data Analyst</div>
-            [span_9](start_span)<div class="company">Sherwood Oaks Christian Church[span_9](end_span)</div>
-            <ul>
-                [span_10](start_span)<li>Led data quality assessments and cleanup prior to system migration[span_10](end_span).</li>
-                [span_11](start_span)<li>Implemented data-handling and security best practices[span_11](end_span).</li>
-            </ul>
+            <div class="date">November 2022 - December 2024</div>
         </div>
+        [span_10](start_span)<div class="company">Sherwood Oaks Christian Church, Bloomington, IN</div>[span_10](end_span)
+        <ul>
+            [span_11](start_span)<li>Led data quality assessments and cleanup efforts prior to system migration[span_11](end_span).</li>
+            [span_12](start_span)<li>Cleaned, validated, and standardized datasets to improve reporting accuracy and reliability[span_12](end_span).</li>
+            [span_13](start_span)<li>Implemented data-handling and security best practices for sensitive information[span_13](end_span).</li>
+        </ul>
+
+        <div class="job-header">
+            <div class="job-title">Research Assistant / Full-Stack Developer</div>
+            <div class="date">February 2014 - December 2015</div>
+        </div>
+        [span_14](start_span)<div class="company">University of Washington School of Nursing, Seattle, WA</div>[span_14](end_span)
+        <ul>
+            [span_15](start_span)<li>Built and maintained secure web applications using PHP, JavaScript, HTML, and CSS[span_15](end_span).</li>
+            [span_16](start_span)<li>Implemented backend protections against SQL injection and common web vulnerabilities[span_16](end_span).</li>
+            <li>Created analytical dashboards in Tableau to support research analysis and presentations.</li>
+        </ul>
     </section>
 
     <section id="education">
         <h2>Education</h2>
-        <p><strong>M.S. [span_12](start_span)Data Science</strong> - Johns Hopkins University (Currently Enrolled)[span_12](end_span)</p>
-        <p><strong>B.S. [span_13](start_span)Statistics</strong> - University of Washington[span_13](end_span)</p>
+        <p><strong>M.S. [span_17](start_span)Data Science</strong>, Johns Hopkins University - Currently Enrolled (Online)[span_17](end_span)</p>
+        <p><strong>B.S. Statistics (Operations Research)</strong>, University of Washington</p>
     </section>
 
 </body>
