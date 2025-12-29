@@ -24,7 +24,7 @@
             right: 0;
             top: 0;
             height: 100vh;
-            width: 150px; /* Width of the sidebar */
+            width: 120px; /* Width of the sidebar */
             background: #f8f8f8;
             border-left: 1px solid #eee;
             display: flex;
@@ -82,6 +82,44 @@
             border-radius: 4px;
             font-size: 14px;
         }
+
+        .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 25px;
+    margin-top: 40px;
+    text-align: center;
+}
+
+.stat-item {
+    background: #fdfdfd;
+    padding: 25px;
+    border-radius: 12px;
+    border: 1px solid #eee;
+    transition: transform 0.3s ease;
+}
+
+.stat-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+}
+
+.stat-number {
+    display: block;
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #000;
+    margin-bottom: 5px;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    color: #666;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+}
+
     </style>
 </head>
 <body>
@@ -115,6 +153,25 @@
             </div>
         </section>
 
+        <section id="fun-facts">
+    <h2>By The Numbers</h2>
+    <div class="stats-grid">
+        <div class="stat-item">
+            <span class="stat-number" data-target="99.8">0</span>
+            <span class="stat-label">% Query Time Reduction</span>
+        </div>
+        <div class="stat-item">
+            <span class="stat-number" data-target="11">0</span>
+            <span class="stat-label">Years Since First Dev Role</span>
+        </div>
+        <div class="stat-item">
+            <span class="stat-number" data-target="15">0</span>
+            <span class="stat-label">SQL Flavors & Tools Used</span>
+        </div>
+    </div>
+</section>
+
+
         <section id="experience">
             <h2>Professional Experience</h2>
             
@@ -146,6 +203,41 @@
             <p><strong>B.S. Statistics (Operations Research)</strong>, University of Washington</p>
         </section>
     </main>
+<script>
+    const observerOptions = {
+        threshold: 0.5
+    };
+
+    const countUp = (entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const counters = entry.target.querySelectorAll('.stat-number');
+                counters.forEach(counter => {
+                    const target = +counter.getAttribute('data-target');
+                    const duration = 2000; // 2 seconds
+                    const increment = target / (duration / 16);
+                    
+                    let current = 0;
+                    const updateCount = () => {
+                        current += increment;
+                        if (current < target) {
+                            counter.innerText = current.toFixed(target % 1 === 0 ? 0 : 1);
+                            if (target === 99.8) counter.innerText += "%";
+                            requestAnimationFrame(updateCount);
+                        } else {
+                            counter.innerText = target + (target === 99.8 ? "%" : "");
+                        }
+                    };
+                    updateCount();
+                });
+                observer.unobserve(entry.target);
+            }
+        });
+    };
+
+    const observer = new IntersectionObserver(countUp, observerOptions);
+    observer.observe(document.querySelector('.stats-grid'));
+</script>
 
 </body>
 </html>
