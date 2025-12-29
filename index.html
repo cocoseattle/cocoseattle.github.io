@@ -18,136 +18,134 @@
             background-color: #ffffff;
         }
 
-        /* Fixed Navigation Menu - Moved to the Right */
+        /* Fixed Vertical Navigation on the Right Edge */
         nav {
             position: fixed;
+            right: 0;
             top: 0;
-            width: 100%;
-            background: rgba(255, 255, 255, 0.95);
-            border-bottom: 1px solid #eee;
+            height: 100vh;
+            width: 150px; /* Width of the sidebar */
+            background: #f8f8f8;
+            border-left: 1px solid #eee;
             display: flex;
-            /* This pushes the content to the right */
-            justify-content: flex-end; 
-            padding: 20px 0;
+            flex-direction: column;
+            justify-content: center; /* Centers links vertically */
+            align-items: center;
             z-index: 1000;
         }
 
-        nav .nav-links {
-            /* Spacing from the right edge of the screen */
-            margin-right: 50px; 
-        }
-
         nav a {
-            margin-left: 25px;
             text-decoration: none;
             color: #666;
             font-weight: 500;
-            font-size: 14px;
+            font-size: 13px;
+            padding: 15px 0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
             transition: color 0.2s;
+            writing-mode: horizontal-tb; /* Normal text flow */
         }
 
         nav a:hover {
             color: #000;
         }
 
-        /* Section Layout */
+        /* Content Adjustment - Added margin-right so text doesn't hide behind nav */
+        main {
+            margin-right: 150px; 
+            padding: 0 40px;
+        }
+
         section {
-            padding: 120px 20px;
-            max-width: 850px;
+            padding: 100px 0;
+            max-width: 800px;
             margin: 0 auto;
             border-bottom: 1px solid #f0f0f0;
         }
 
         h1 { font-size: 2.5rem; margin-bottom: 5px; font-weight: 700; }
-        h2 { font-size: 1.4rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 30px; color: #333; }
+        h2 { font-size: 1.4rem; border-bottom: 2px solid #333; display: inline-block; padding-bottom: 5px; margin-bottom: 30px; }
         
         .job-header { display: flex; justify-content: space-between; align-items: baseline; margin-top: 25px; }
         .job-title { font-weight: 700; font-size: 1.1rem; }
         .company { color: #555; font-weight: 500; }
         .date { color: #888; font-size: 0.9rem; }
         
-        ul { padding-left: 20px; margin-top: 10px; }
+        ul { padding-left: 20px; }
         li { margin-bottom: 10px; color: #444; }
 
-        .skills-container {
-            background: #f9f9f9;
-            padding: 20px;
-            border-radius: 8px;
+        .skills-tag {
+            display: inline-block;
+            background: #eee;
+            padding: 5px 12px;
+            margin: 4px;
+            border-radius: 4px;
+            font-size: 14px;
         }
     </style>
 </head>
 <body>
 
     <nav>
-        <div class="nav-links">
-            <a href="#home">Home</a>
-            <a href="#summary">Summary</a>
-            <a href="#skills">Skills</a>
-            <a href="#experience">Experience</a>
-            <a href="#education">Education</a>
-        </div>
+        <a href="#home">Home</a>
+        <a href="#summary">Summary</a>
+        <a href="#skills">Skills</a>
+        <a href="#experience">Experience</a>
+        <a href="#education">Education</a>
     </nav>
 
-    <section id="home">
-        [span_2](start_span)<h1>Corinne Geng</h1>[span_2](end_span)
-        <p>Lakewood, OH 44107 | 425-591-6414 | [span_3](start_span)<a href="mailto:gengkejia@gmail.com">gengkejia@gmail.com</a></p>[span_3](end_span)
-    </section>
+    <main>
+        <section id="home">
+            [span_0](start_span)<h1>Corinne Geng[span_0](end_span)</h1>
+            <p>Lakewood, OH 44107 | 425-591-6414 | [span_1](start_span)<a href="mailto:gengkejia@gmail.com">gengkejia@gmail.com</a>[span_1](end_span)</p>
+        </section>
 
-    <section id="summary">
-        <h2>Professional Summary</h2>
-        [span_4](start_span)<p>Data Analyst with strong experience in SQL optimization, analytics, and dashboard development[span_4](end_span). [span_5](start_span)Proven ability to work with large datasets, improve system performance, and deliver actionable insights to technical and non-technical stakeholders[span_5](end_span). [span_6](start_span)Background spans public-sector analytics, data migration, and full-stack development[span_6](end_span).</p>
-    </section>
+        <section id="summary">
+            <h2>Professional Summary</h2>
+            [span_2](start_span)<p>Data Analyst with strong experience in SQL optimization, analytics, and dashboard development[span_2](end_span). [span_3](start_span)Proven ability to work with large datasets, improve system performance, and deliver actionable insights[span_3](end_span). [span_4](start_span)Background spans public-sector analytics, data migration, and full-stack development[span_4](end_span).</p>
+        </section>
 
-    <section id="skills">
-        <h2>Core Skills</h2>
-        <div class="skills-container">
-            <strong>Technical:</strong> SQL (Advanced), Microsoft SQL Server, MySQL, Data Warehousing, Python, R, Power BI, Tableau, Data Visualization, Statistical Analysis, Machine Learning, Data Migration, Excel, Git, AWS, Linux.
-        </div>
-    </section>
+        <section id="skills">
+            <h2>Core Skills</h2>
+            <div>
+                <span class="skills-tag">SQL (Advanced)</span> <span class="skills-tag">Python</span> 
+                <span class="skills-tag">Power BI</span> <span class="skills-tag">Tableau</span> 
+                <span class="skills-tag">Data Warehousing</span> <span class="skills-tag">AWS</span> 
+                <span class="skills-tag">Machine Learning</span> <span class="skills-tag">Git</span>
+            </div>
+        </section>
 
-    <section id="experience">
-        <h2>Professional Experience</h2>
-        
-        <div class="job-header">
-            <div class="job-title">Data Analyst</div>
-            <div class="date">January 2025 - Present</div>
-        </div>
-        <div class="company">Cleveland Division of Police, Cleveland, OH</div>
-        <ul>
-            <li>Developed and optimized complex SQL queries and reporting pipelines supporting high-volume operational datasets.</li>
-            [span_7](start_span)<li>Improved performance of a critical reporting query from ~2 hours to ~15 seconds using indexing, execution-plan analysis, and query refactoring[span_7](end_span).</li>
-            [span_8](start_span)<li>Designed and maintained interactive dashboards using Power BI and Tableau to support leadership decision-making[span_8](end_span).</li>
-            [span_9](start_span)<li>Worked with data warehouses and analytical tools including SQL Server, Excel, Databricks, and ArcGIS[span_9](end_span).</li>
-        </ul>
+        <section id="experience">
+            <h2>Professional Experience</h2>
+            
+            <div class="job-header">
+                <div class="job-title">Data Analyst</div>
+                <div class="date">Jan 2025 - Present</div>
+            </div>
+            [span_5](start_span)<div class="company">Cleveland Division of Police[span_5](end_span)</div>
+            <ul>
+                [span_6](start_span)<li>Developed and optimized complex SQL queries and reporting pipelines[span_6](end_span).</li>
+                [span_7](start_span)<li>Improved performance of a critical reporting query from ~2 hours to ~15 seconds[span_7](end_span).</li>
+                [span_8](start_span)<li>Designed and maintained interactive dashboards using Power BI and Tableau[span_8](end_span).</li>
+            </ul>
 
-        <div class="job-header">
-            <div class="job-title">Project Data Analyst</div>
-            <div class="date">November 2022 - December 2024</div>
-        </div>
-        [span_10](start_span)<div class="company">Sherwood Oaks Christian Church, Bloomington, IN</div>[span_10](end_span)
-        <ul>
-            [span_11](start_span)<li>Led data quality assessments and cleanup efforts prior to system migration[span_11](end_span).</li>
-            [span_12](start_span)<li>Cleaned, validated, and standardized datasets to improve reporting accuracy and reliability[span_12](end_span).</li>
-            [span_13](start_span)<li>Implemented data-handling and security best practices for sensitive information[span_13](end_span).</li>
-        </ul>
+            <div class="job-header">
+                <div class="job-title">Project Data Analyst</div>
+                <div class="date">Nov 2022 - Dec 2024</div>
+            </div>
+            [span_9](start_span)<div class="company">Sherwood Oaks Christian Church[span_9](end_span)</div>
+            <ul>
+                [span_10](start_span)<li>Led data quality assessments and cleanup efforts prior to system migration[span_10](end_span).</li>
+                [span_11](start_span)<li>Cleaned, validated, and standardized datasets to improve reporting accuracy[span_11](end_span).</li>
+            </ul>
+        </section>
 
-        <div class="job-header">
-            <div class="job-title">Research Assistant / Full-Stack Developer</div>
-            <div class="date">February 2014 - December 2015</div>
-        </div>
-        [span_14](start_span)<div class="company">University of Washington School of Nursing, Seattle, WA</div>[span_14](end_span)
-        <ul>
-            [span_15](start_span)<li>Built and maintained secure web applications using PHP, JavaScript, HTML, and CSS[span_15](end_span).</li>
-            [span_16](start_span)<li>Implemented backend protections against SQL injection and common web vulnerabilities[span_16](end_span).</li>
-            <li>Created analytical dashboards in Tableau to support research analysis and presentations.</li>
-        </ul>
-    </section>
-
-    <section id="education">
-        <h2>Education</h2>
-        <p><strong>M.S. [span_17](start_span)Data Science</strong>, Johns Hopkins University - Currently Enrolled (Online)[span_17](end_span)</p>
-        <p><strong>B.S. Statistics (Operations Research)</strong>, University of Washington</p>
-    </section>
+        <section id="education">
+            <h2>Education</h2>
+            <p><strong>M.S. [span_12](start_span)Data Science</strong>, Johns Hopkins University - Currently Enrolled[span_12](end_span)</p>
+            <p><strong>B.S. [span_13](start_span)Statistics (Operations Research)</strong>, University of Washington[span_13](end_span)</p>
+        </section>
+    </main>
 
 </body>
 </html>
