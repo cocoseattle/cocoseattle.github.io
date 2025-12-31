@@ -100,15 +100,10 @@
         }
 
         strong {
-            
-        }
-
-        strong {
             color: #232323;
             display: inline-block;
             min-width: 1ch; /* Prevents layout shifting */
             visibility: hidden; 
-            color: var(--accent); /* Consistent modern blue for key terms */
         }
         
         strong.typing {
@@ -391,7 +386,7 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     const observerOptions = {
-        threshold: 0.2, // Trigger when 20% of the element is visible
+        threshold: 0.4, // Trigger when 20% of the element is visible
         rootMargin: "0px 0px -50px 0px" // Slight delay so user sees it start
     };
 
