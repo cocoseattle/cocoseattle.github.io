@@ -169,10 +169,56 @@
             font-weight: 700;
             letter-spacing: 1px;
         }
+
+                /* Notice / Tooltip Container */
+        .menu-notice {
+            position: fixed;
+            right: 100px; /* Positions it to the left of your 60px sidebar */
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--accent);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            white-space: nowrap;
+            z-index: 1001;
+            pointer-events: none; /* Allows clicking through the notice */
+            animation: floatLeftRight 2s ease-in-out infinite;
+        }
+        
+        /* The Arrow pointing right */
+        .menu-notice::after {
+            content: '';
+            position: absolute;
+            right: -8px;
+            top: 50%;
+            transform: translateY(-50%);
+            border-top: 8px solid transparent;
+            border-bottom: 8px solid transparent;
+            border-left: 8px solid var(--accent);
+        }
+        
+        /* Floating Animation */
+        @keyframes floatLeftRight {
+            0%, 100% { transform: translateY(-50%) translateX(0); }
+            50% { transform: translateY(-50%) translateX(-10px); }
+        }
+        
+        /* Auto-hide feature: Notice disappears after user scrolls */
+        .menu-notice.fade-out {
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
     </style>
 </head>
 <body>
-
+    <div class="menu-notice" id="menuNotice">
+        This is menu
+    </div>
     <nav>
         <a href="#home">Home</a>
         <a href="#summary">Bio</a>
@@ -320,6 +366,15 @@
     </main>
 
 <script>
+    // Hide the menu notice when the user scrolls
+    window.addEventListener('scroll', () => {
+        const notice = document.getElementById('menuNotice');
+        if (window.scrollY > 50 && notice) {
+            notice.classList.add('fade-out');
+            // Remove from DOM after transition for performance
+            setTimeout(() => notice.remove(), 500);
+        }
+    }, { once: true }); // 'once' ensures the listener is removed after first execution
     // 1. Reveal Sections on Scroll Animation
     const sections = document.querySelectorAll('section');
     const revealObserver = new IntersectionObserver((entries) => {
