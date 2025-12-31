@@ -368,15 +368,31 @@
 
 <script>
     // Hide the menu notice when the user scrolls
-    window.addEventListener('scroll', () => {
+    document.addEventListener("DOMContentLoaded", () => {
         const notice = document.getElementById('menuNotice');
-        if (window.scrollY > 20 && notice) {
-            notice.classList.add('fade-out');
-            // Remove from DOM after transition for performance
-            setTimeout(() => notice.remove(), 500);
+        
+        if (notice) {
+            const dismissNotice = () => {
+                notice.classList.add('fade-out');
+                
+                // Clean up: remove the notice and the event listeners
+                setTimeout(() => {
+                    notice.remove();
+                }, 400);
+    
+                // Stop listening once the notice is gone
+                window.removeEventListener('scroll', dismissNotice);
+                document.removeEventListener('mousedown', dismissNotice);
+                document.removeEventListener('keydown', dismissNotice);
+            };
+    
+            // Listen for Scroll, Click (Mousedown), or Key Press
+            window.addEventListener('scroll', dismissNotice, { passive: true });
+            document.addEventListener('mousedown', dismissNotice);
+            document.addEventListener('keydown', dismissNotice);
         }
-    }, { once: true }); // 'once' ensures the listener is removed after first execution
-    // 1. Reveal Sections on Scroll Animation
+    });
+    // Reveal Sections on Scroll Animation
     const sections = document.querySelectorAll('section');
     const revealObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
