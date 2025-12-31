@@ -100,7 +100,19 @@
         }
 
         strong {
+            
+        }
+
+        strong {
             color: #232323;
+            display: inline-block;
+            min-width: 1ch; /* Prevents layout shifting */
+            visibility: hidden; 
+            color: var(--accent); /* Consistent modern blue for key terms */
+        }
+        
+        strong.typing {
+            visibility: visible;
         }
         
         .summary-large {
@@ -189,7 +201,7 @@
             <h2>Professional Summary</h2>
             <p class="summary-large">
                 Data Analyst with strong experience in <strong>SQL</strong> optimization, <strong>statistical</strong> analytics, and <strong>dashboard</strong> development. Proven ability to work with <strong>large</strong> datasets, improve system <strong>performance</strong>, and deliver actionable <strong>insights</strong>. 
-                <br>Background spans public-sector analytics, data migration, data science, virtual heritage, and full-stack development. 
+                <br>Background spans: public-sector analytics, data migration, data science, virtual heritage, and full-stack development. 
             </p>
         </section>
 
@@ -355,7 +367,45 @@
 
     const statsObserver = new IntersectionObserver(countUp, { threshold: 0.5 });
     statsObserver.observe(document.querySelector('.stats-grid'));
-</script>
 
+document.addEventListener("DOMContentLoaded", () => {
+    // Select every <strong> tag on the entire page
+    const allStrongTags = document.querySelectorAll("strong");
+
+    const typeWriter = (element) => {
+        const text = element.textContent; // Use textContent to strip any accidental nested HTML
+        element.innerHTML = "";
+        element.classList.add("typing");
+        
+        let i = 0;
+        const speed = 60; // Slightly faster for a snappier feel
+
+        function type() {
+            if (i < text.length) {
+                element.innerHTML += text.charAt(i);
+                i++;
+                setTimeout(type, speed);
+            }
+        }
+        type();
+    };
+
+    const observerOptions = {
+        threshold: 0.2, // Trigger when 20% of the element is visible
+        rootMargin: "0px 0px -50px 0px" // Slight delay so user sees it start
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                typeWriter(entry.target);
+                observer.unobserve(entry.target); // Ensure it only types once
+            }
+        });
+    }, observerOptions);
+
+    allStrongTags.forEach(tag => observer.observe(tag));
+});
+</script>
 </body>
 </html>
